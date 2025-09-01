@@ -1,35 +1,89 @@
+Tabii! İşte senin için **tüm README.md** dosyasının kısa, net ve kullanıma hazır hâli:
+
+---
 
 # Kamu Geri Bildirimi ve Duygu Analizi – Test
 
-Bu paket, fine-tune edilmiş **TURKCELL/Turkcell-LLM-7b-v1** modelini HPC üzerinden JSON verileri ile test etmek için hazırlanmıştır.
+Bu paket, fine-tune edilmiş **TURKCELL/Turkcell-LLM-7b-v1** modelini HPC üzerinde JSON verileri ile test etmek için hazırlanmıştır.
 
-
+---
 
 ## Gereksinimler
 
-Python 3.9+ ve aşağıdaki kütüphaneler gereklidir. Tüm bağımlılıkları `requirements.txt` dosyasından yükleyebilirsiniz:
+Python 3.9+ ve gerekli kütüphaneler. Tüm bağımlılıkları `requirements.txt` üzerinden yükleyebilirsiniz:
 
 ```bash
 pip install -r /arf/scratch/teknogrp8u5/final/model/requirements.txt
 ```
 
+> Not: Yeni bir virtual environment veya HPC ortamı kullanmanız önerilir.
+
+---
 
 ## Test Adımları
 
-1. Test dosyasını çalıştırın:
-
-/arf/scratch/teknogrp8u5/final/model bu dizin içerisinde kendi datasetinizde dataset_path.json  dosyasını değiştirerek aşağıda bulunan komut ile test işlemlerini gerçekleştirebilirsiniz.
+Test dosyasını çalıştırmak için:
 
 ```bash
-  python test.py --input /arf/scratch/teknogrp8u5/dataset_path.json --text-field yorum --output /arf/scratch/teknogrp8u5/final/model/test_output.json
+python /arf/scratch/teknogrp8u5/final/model/test.py \
+  --input /arf/scratch/teknogrp8u5/dataset_path.json \
+  --text-field yorum \
+  --output /arf/scratch/teknogrp8u5/final/model/test_output.json
 ```
 
-* `--text-field` → JSON’da metinlerin bulunduğu anahtar (örnek: `yorum`)
-* `--output` → Çıktı JSON dosyası
+**Parametreler:**
 
-Ayrıca konsol üzerinde çıktı: 
+* `--input` → Test etmek istediğiniz JSON veri dosyası
+* `--text-field` → Modelin analiz edeceği metin alanı (örn: `yorum`)
+* `--output` → Tahminlerin kaydedileceği JSON dosyası
+
+---
+
+## Örnek Dataset
+
+Datasetimiz her geri bildirimi bir JSON nesnesi olarak içerir. Önemli alanlar:
+
+* **`id`** → Geri bildirimin benzersiz numarası
+* **`yorum`** → Kullanıcının şikayet veya öneri metni (model bu alan üzerinden duygu analizi yapar)
+* **`konu`** → Geri bildirimin başlığı veya konusu
+* **`duygu`** → Geri bildirimin etiketi (`negatif`, `nötr`, `pozitif`)
+* **`tarih`, `kurum`, `konum`, `kaynak`** → Ek bilgi alanları
+
+**Örnek kayıt:**
+
+```json
+{
+  "id": "1",
+  "yorum": "Çoğu gece mahallede park yeri aramak zorunda kalıyorum...",
+  "konu": "İstanbul Büyükşehir Belediyesi Mahallede Park Sorunu",
+  "duygu": "negatif",
+  "tarih": "10/12/2024",
+  "kurum": "İ̇bb-İstanbul",
+  "konum": "İstanbul",
+  "kaynak": "X"
+}
+```
+
+---
+
+## Test Çıktısı Örneği
+
+Konsol çıktısı:
+
+```
 Metin: Belirli açılış ve kapanış saatleri aralığında hizmet veriyor.
 Tahmin: nötr
+```
 
-Bu şekilde görünmektedir.
+JSON çıktısı `test_output.json` dosyasında saklanır:
+
+```json
+{
+  "id": "1",
+  "yorum": "...",
+  "tahmin": "negatif"
+}
+```
+
+---
 
