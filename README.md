@@ -1,7 +1,7 @@
 
 # Kamu Geri Bildirimi ve Duygu Analizi – Test
 
-Bu paket, fine-tune edilmiş **TURKCELL/Turkcell-LLM-7b-v1** modelini JSON veri üzerinde test etmek için hazırlanmıştır.
+Bu paket, fine-tune edilmiş **TURKCELL/Turkcell-LLM-7b-v1** modelini HPC üzerinden JSON verileri ile test etmek için hazırlanmıştır.
 
 
 
@@ -16,12 +16,7 @@ pip install -r /arf/scratch/teknogrp8u5/final/model/requirements.txt
 
 ## Test Adımları
 
-1. Model ve tokenizer klasörünü indirin:
-   
-./llm_finetune/final_model
-
-
-2. Test dosyasını çalıştırın:
+1. Test dosyasını çalıştırın:
 
 /arf/scratch/teknogrp8u5/final/model bu dizin içerisinde kendi datasetinizde dataset_path.json  dosyasını değiştirerek aşağıda bulunan komut ile test işlemlerini gerçekleştirebilirsiniz.
 
@@ -31,3 +26,10 @@ pip install -r /arf/scratch/teknogrp8u5/final/model/requirements.txt
 
 * `--text-field` → JSON’da metinlerin bulunduğu anahtar (örnek: `yorum`)
 * `--output` → Çıktı JSON dosyası
+
+Ayrıca konsol üzerinde çıktı: 
+Metin: Belirli açılış ve kapanış saatleri aralığında hizmet veriyor.
+Tahmin: nötr
+
+Bu şekilde görünmektedir.
+
