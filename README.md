@@ -77,13 +77,34 @@ Tahmin: nötr
 
 JSON çıktısı `test_output.json` dosyasında saklanır:
 
+
+* **`id`** → Geri bildirimin benzersiz numarası
+* **`yorum`** → Kullanıcının şikayet veya öneri metni (model bu alan üzerinden duygu analizi yapar)
+* **`konu`** → Geri bildirimin başlığı veya konusu
+* **`duygu`** → Geri bildirimin etiketi (`negatif`, `nötr`, `pozitif`)
+* **`tarih`**, **`kurum`**, **`konum`**, **`kaynak`** → Ek bilgi alanları
+* **`_pred_label`** → Modelin tahmin ettiği duygu etiketi
+* **`_pred_text`** → Modelin tahmin için kullandığı metin
+
+
 ```json
 {
-  "id": "1",
-  "yorum": "...",
-  "tahmin": "negatif"
-}
+    "id": "10000",
+    "yorum": "Belirli açılış ve kapanış saatleri aralığında hizmet veriyor.",
+    "konu": "Genel",
+    "kaynak": "Sentetik",
+    "tarih": "02/09/2022",
+    "kurum": "Çay Bahçesi – Moda Sahili",
+    "konum": "İstanbul",
+    "duygu": "nötr",
+    "_pred_label": "nötr",
+    "_pred_text": "Belirli açılış ve kapanış saatleri aralığında hizmet veriyor."
+  }
 ```
+
+
+
+
 
 ---
 
