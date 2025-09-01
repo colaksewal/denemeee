@@ -11,16 +11,15 @@ Python 3.9+ ve aşağıdaki kütüphaneler gereklidir. Tüm bağımlılıkları 
 
 ```bash
 pip install -r /arf/scratch/teknogrp8u5/final/model/requirements.txt
-
+```
 
 
 ## Test Adımları
 
 1. Model ve tokenizer klasörünü indirin:
-
-```
+   
 ./llm_finetune/final_model
-```
+
 
 2. Test dosyasını çalıştırın:
 
