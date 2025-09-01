@@ -1,4 +1,3 @@
-Tabii! İşte senin için **tüm README.md** dosyasının kısa, net ve kullanıma hazır hâli:
 
 ---
 
