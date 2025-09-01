@@ -1,5 +1,5 @@
 
-# TURKCELL LLM Sentiment Analysis – Test
+# Kamu Geri Bildirimi ve Duygu Analizi – Test
 
 Bu paket, fine-tune edilmiş **TURKCELL/Turkcell-LLM-7b-v1** modelini JSON veri üzerinde test etmek için hazırlanmıştır.
 
